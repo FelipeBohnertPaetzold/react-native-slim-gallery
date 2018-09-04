@@ -11,6 +11,12 @@ export default class RenderPages extends Component {
         }
     }
 
+    static get defaultProps() {
+        return {
+            scrollEnabled: true
+        }
+    }
+
     state = { position: 0 }
 
     _next = () => {
@@ -31,6 +37,7 @@ export default class RenderPages extends Component {
         <ViewPagerAndroid
             style={{ flex: 1 }}
             onPageScroll={this._onPageScroll}
+            scrollEnabled={this.props.scrollEnabled}
             onPageSelected={this.props.onPageSelected}
             ref={ref => (this.viewPager = ref)}
         >

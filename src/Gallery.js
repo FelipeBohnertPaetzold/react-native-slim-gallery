@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, ImageBackground, StyleSheet, Dimensions } from 'react-native'
+import { View, ImageBackground, StyleSheet, Dimensions, PanResponder } from 'react-native'
+import ViewControl from 'react-native-zoom-view'
 import PropTypes from 'prop-types'
 import RenderPages from './RenderPages'
 
-export default class Gallery extends Component {
+const { width, height } = Dimensions.get('window')
 
+export default class Gallery extends Component {
     static get propTypes() {
         return {
             images: PropTypes.array.isRequired,
@@ -18,9 +20,55 @@ export default class Gallery extends Component {
         }
     }
 
+    state = {
+        scrollEnabled: true,
+        scale: undefined
+    }
+
+    onResponderRelease = (x, scale) => {
+        if (scale > 1) {
+            this.setState({ scrollEnabled: false, scale })
+        } else {
+            this.setState({ scrollEnabled: true, scale })
+        }
+    }
+
+    onDoubleClick = () => {
+        setTimeout(() => {
+            if (this.state.scale === undefined) {
+                return this.setState({ scrollEnabled: false, scale: 2 })
+            }
+            if (this.state.scale > 1) {
+                return this.setState({ scrollEnabled: false, scale: 1 })
+            }
+
+            return this.setState({ scrollEnabled: true })
+        }, 200)
+
+    }
+
+    onRangeOffset = () => this.setState({ scrollEnabled: true })
+
+    _component = props => (
+        <ViewControl
+            cropWidth={width}
+            cropHeight={height}
+            imageWidth={width}
+            onDoubleClick={this.onDoubleClick}
+            horizontalOuterRangeOffset={this.onRangeOffset}
+            horizontalOuterRangeOffset={this.range}
+            imageHeight={height}
+            responderRelease={this.onResponderRelease}
+        >
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                {this.props.renderComponent(props)}
+            </View>
+        </ViewControl>
+    )
+
     render = () => (
-        <View style={{ backgroundColor: '#000', flex: 1 }}>
-            <RenderPages pages={this.props.images} component={this.props.renderComponent} />
+        <View style={{ backgroundColor: '#000' }}>
+            <RenderPages pages={this.props.images} scrollEnabled={this.state.scrollEnabled} component={this._component} />
         </View>
     )
 }
