@@ -1,7 +1,7 @@
 {
-  "name": "empty-project-template",
+  "name": "react-native-slim-gallery",
   "main": "./App.js",
-  "private": true,
+  "version": "1.0.1",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",

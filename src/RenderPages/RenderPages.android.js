@@ -13,7 +13,8 @@ export default class RenderPages extends Component {
 
     static get defaultProps() {
         return {
-            scrollEnabled: true
+            scrollEnabled: true,
+            initial: 0
         }
     }
 
@@ -38,6 +39,7 @@ export default class RenderPages extends Component {
             style={{ flex: 1 }}
             onPageScroll={this._onPageScroll}
             scrollEnabled={this.props.scrollEnabled}
+            initialPage={this.props.initial}
             onPageSelected={this.props.onPageSelected}
             ref={ref => (this.viewPager = ref)}
         >

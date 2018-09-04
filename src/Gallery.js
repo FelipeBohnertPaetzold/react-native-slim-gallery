@@ -16,7 +16,8 @@ export default class Gallery extends Component {
 
     static get defaultProps() {
         return {
-            renderComponent: props => <ImageBackground style={styles.image} {...props} />
+            renderComponent: props => <ImageBackground style={styles.image} {...props} />,
+            initial: 0
         }
     }
 
@@ -67,8 +68,8 @@ export default class Gallery extends Component {
     )
 
     render = () => (
-        <View style={{ backgroundColor: '#000' }}>
-            <RenderPages pages={this.props.images} scrollEnabled={this.state.scrollEnabled} component={this._component} />
+        <View style={{ backgroundColor: '#000', flex: 1 }}>
+            <RenderPages initial={this.props.initial} pages={this.props.images} scrollEnabled={this.state.scrollEnabled} component={this._component} />
         </View>
     )
 }

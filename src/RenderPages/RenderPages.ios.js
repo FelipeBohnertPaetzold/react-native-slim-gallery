@@ -13,7 +13,8 @@ export default class PaginatorHorizontal extends Component {
 
     static get defaultProps() {
         return {
-            scrollEnabled: true
+            scrollEnabled: true,
+            initial: 0
         }
     }
 
@@ -55,6 +56,7 @@ export default class PaginatorHorizontal extends Component {
             renderItem={this._renderItem}
             ref={ref => (this.flatList = ref)}
             scrollEnabled={this.props.scrollEnabled}
+            initialScrollIndex={this.props.initial}
             keyExtractor={item => String(item.key)}
             horizontal={true}
             onScroll={this._handleScroll}
