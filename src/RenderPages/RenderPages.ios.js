@@ -44,11 +44,18 @@ export default class PaginatorHorizontal extends Component {
         this._goToStep(this.state.position - 1)
     }
 
-    _renderItem = ({ item }) => (
-        <View style={{ width: Dimensions.get('window').width, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            {this.props.component(item)}
-        </View>
-    )
+    _renderItem = ({ item, index }) => {
+        const distance = this.state.position - index
+        if (distance <= 1 && distance >= -1) {
+            return (
+                <View style={{ width: Dimensions.get('window').width, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    {this.props.component(item)}
+                </View>
+            )
+        }
+
+        return null
+    }
 
     render = () => (
         <FlatList

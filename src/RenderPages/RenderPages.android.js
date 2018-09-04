@@ -34,6 +34,16 @@ export default class RenderPages extends Component {
         }
     }
 
+    _component = (item, index) => {
+        const distance = this.state.position - index
+
+        if (distance <= 1 && distance >= -1) {
+            return this.props.component(item)
+        }
+
+        return null
+    }
+
     render = () => (
         <ViewPagerAndroid
             style={{ flex: 1 }}
@@ -43,9 +53,9 @@ export default class RenderPages extends Component {
             onPageSelected={this.props.onPageSelected}
             ref={ref => (this.viewPager = ref)}
         >
-            {this.props.pages.map(item => (
+            {this.props.pages.map((item, index) => (
                 <View key={item.key}>
-                    {this.props.component(item)}
+                    {this._component(item, index)}
                 </View>
             ))}
         </ViewPagerAndroid>
