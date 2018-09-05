@@ -10,7 +10,8 @@ export default class Gallery extends Component {
     static get propTypes() {
         return {
             images: PropTypes.array.isRequired,
-            renderComponent: PropTypes.func
+            renderComponent: PropTypes.func,
+            initial: PropTypes.number
         }
     }
 
