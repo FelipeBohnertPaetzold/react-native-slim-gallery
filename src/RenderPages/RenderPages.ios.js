@@ -7,7 +7,8 @@ export default class PaginatorHorizontal extends Component {
     static get propTypes() {
         return {
             component: PropTypes.func.isRequired,
-            pages: PropTypes.array.isRequired
+            pages: PropTypes.array.isRequired,
+            initial: PropTypes.number
         }
     }
 
@@ -16,6 +17,17 @@ export default class PaginatorHorizontal extends Component {
             scrollEnabled: true,
             initial: 0
         }
+    }
+
+    componentDidMount = () => {
+        if (this.state.position > -1 && this.state.position < this.props.initial) {
+            this._flatList.scrollToOffset({
+                animated: false,
+                offset: this.props.initial * Dimensions.get('screen').width
+            })
+            return true
+        }
+        return false
     }
 
     state = {
@@ -29,21 +41,6 @@ export default class PaginatorHorizontal extends Component {
         this.setState({ position })
     }
 
-    _goToStep = (index = 0) => {
-        this.flatList.scrollToOffset({
-            animated: true,
-            offset: index * Dimensions.get('window').width
-        })
-    }
-
-    _next = () => {
-        this._goToStep(this.state.position + 1)
-    }
-
-    _back = () => {
-        this._goToStep(this.state.position - 1)
-    }
-
     _renderItem = ({ item, index }) => {
         const distance = this.state.position - index
         if (distance <= 1 && distance >= -1) {
@@ -54,16 +51,16 @@ export default class PaginatorHorizontal extends Component {
             )
         }
 
-        return null
+        return <View style={{ width: Dimensions.get('window').width, flex: 1, alignItems: 'center', justifyContent: 'center' }} />
     }
 
     render = () => (
         <FlatList
             data={this.props.pages}
+            extraData={this.state}
             renderItem={this._renderItem}
-            ref={ref => (this.flatList = ref)}
+            ref={ref => this._flatList = ref}
             scrollEnabled={this.props.scrollEnabled}
-            initialScrollIndex={this.props.initial}
             keyExtractor={item => String(item.key)}
             horizontal={true}
             onScroll={this._handleScroll}

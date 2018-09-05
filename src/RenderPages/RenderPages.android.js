@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ViewPagerAndroid, View, Text } from 'react-native'
+import { ViewPagerAndroid, View, Dimensions } from 'react-native'
 import PropTypes from 'prop-types'
 
 export default class RenderPages extends Component {
@@ -20,14 +20,6 @@ export default class RenderPages extends Component {
 
     state = { position: 0 }
 
-    _next = () => {
-        this.viewPager.setPage(this.state.position + 1)
-    }
-
-    _back = () => {
-        this.viewPager.setPage(this.state.position - 1)
-    }
-
     _onPageScroll = ({ nativeEvent: { position } }) => {
         if (this.state.position !== position) {
             this.setState({ position })
@@ -41,7 +33,7 @@ export default class RenderPages extends Component {
             return this.props.component(item)
         }
 
-        return null
+        return <View style={{ width: Dimensions.get('window').width }} />
     }
 
     render = () => (
