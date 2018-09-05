@@ -14,7 +14,6 @@ A pure js **gallery** component for React Native.
 # Simple use?
 
     import * as React from 'react'
-    import {View} from 'react-native'
     import Gallery from 'react-native-slim-gallery'
     
     const images = [
@@ -33,4 +32,4 @@ A pure js **gallery** component for React Native.
 |--|--|--|--|--|
 | images | array | | yes | Is the array of images you want to render |
 | renderComponent | function | `props => <ImageBackground {...props} />` | no | It is the function that renders the image component, you can pass something custom as long as it works as the component `<Image />`
-| Initial | number | 0 | no | Sets the initial position of the gallery
+| initial | number | 0 | no | Sets the initial position of the gallery
