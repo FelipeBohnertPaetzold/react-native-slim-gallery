@@ -2,16 +2,16 @@
   "name": "react-native-slim-gallery",
   "main": "./App.js",
   "version": "1.0.7",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "eject": "expo eject"
-  },
+  "author": "Felipe Bohnert Paetzold",
+  "repository": "https://github.com/FelipeBohnertPaetzold/react-native-slim-gallery",
   "dependencies": {
-    "expo": "^29.0.0",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
     "react-native-zoom-view": "^1.0.2"
-  }
+  },
+  "keywords": [
+    "react-native",
+    "gallery",
+    "images"
+  ]
 }
