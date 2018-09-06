@@ -27,7 +27,7 @@ export default class Gallery extends Component {
       renderComponent: props => (
         <ImageBackground style={styles.image} {...props} />
       ),
-      backgroundColor: this.props.backgroundColor,
+      backgroundColor: '#000',
       initial: 0
     }
   }
