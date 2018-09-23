@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
-import {
-  View,
-  ImageBackground,
-  StyleSheet,
-  Dimensions,
-  PanResponder
-} from 'react-native'
+import { View, ImageBackground, StyleSheet, Dimensions } from 'react-native'
 import ViewControl from 'react-native-zoom-view'
 import PropTypes from 'prop-types'
 import RenderPages from './RenderPages'
@@ -61,20 +55,27 @@ export default class Gallery extends Component {
   onRangeOffset = () => this.setState({ scrollEnabled: true })
 
   _component = props => (
-    <ViewControl
-      cropWidth={width}
-      cropHeight={height}
-      imageWidth={width}
-      onDoubleClick={this.onDoubleClick}
-      horizontalOuterRangeOffset={this.onRangeOffset}
-      horizontalOuterRangeOffset={this.range}
-      imageHeight={height}
-      responderRelease={this.onResponderRelease}
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width
+      }}
     >
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <ViewControl
+        cropWidth={width}
+        cropHeight={height}
+        imageWidth={width}
+        onDoubleClick={this.onDoubleClick}
+        horizontalOuterRangeOffset={this.onRangeOffset}
+        horizontalOuterRangeOffset={this.range}
+        imageHeight={height / 2}
+        responderRelease={this.onResponderRelease}
+      >
         {this.props.renderComponent(props)}
-      </View>
-    </ViewControl>
+      </ViewControl>
+    </View>
   )
 
   render = () => (
