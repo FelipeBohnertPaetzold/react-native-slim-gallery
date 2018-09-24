@@ -11,6 +11,7 @@ export default class Gallery extends Component {
     return {
       images: PropTypes.array.isRequired,
       renderComponent: PropTypes.func,
+      onPageSelected: PropTypes.func,
       backgroundColor: PropTypes.string,
       initial: PropTypes.number
     }
@@ -85,6 +86,7 @@ export default class Gallery extends Component {
         pages={this.props.images}
         scrollEnabled={this.state.scrollEnabled}
         component={this._component}
+        onPageSelected={this.props.onPageSelected}
       />
     </View>
   )
