@@ -7,7 +7,8 @@ export default class PaginatorHorizontal extends Component {
     return {
       component: PropTypes.func.isRequired,
       pages: PropTypes.array.isRequired,
-      initial: PropTypes.number
+      initial: PropTypes.number,
+      onPageSelected: PropTypes.func
     }
   }
 
@@ -38,6 +39,7 @@ export default class PaginatorHorizontal extends Component {
     const position = Math.round(x / Dimensions.get('window').width)
 
     this.setState({ position })
+    this.props.onPageSelected(position)
   }
 
   _renderItem = ({ item, index }) => {
