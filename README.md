@@ -36,3 +36,4 @@ _or yarn (we <3 yarn)_
 | renderComponent | function | `props => <ImageBackground {...props} />` | no       | It is the function that renders the image component, you can pass something custom as long as it works as the component `<Image />` |
 | initial         | number   | 0                                         | no       | Sets the initial position of the gallery                                                                                            |
 | backgroundColor | string   | #000                                      | no       | Gallery background color                                                                                                            |
+| onPageSelected  | function |                                           | no       | Dispatched when the selected page changes                                                                                           |
