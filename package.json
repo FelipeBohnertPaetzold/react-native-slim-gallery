@@ -7,8 +7,12 @@
     "url": "https://github.com/FelipeBohnertPaetzold/react-native-slim-gallery",
     "type": "git"
   },
-  "peerDependencies": {
+  "dependencies": {
     "react-native-zoom-view": "^1.0.2"
+  },
+  "peerDependencies": {
+    "react": ">=15.2.0",
+    "react-native": ">=0.44.0"
   },
   "keywords": [
     "react-native",
