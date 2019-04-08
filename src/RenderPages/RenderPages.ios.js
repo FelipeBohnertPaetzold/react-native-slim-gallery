@@ -15,6 +15,7 @@ export default class PaginatorHorizontal extends Component {
   static get defaultProps() {
     return {
       scrollEnabled: true,
+      onPageSelected: () => ({}),
       initial: 0
     }
   }
