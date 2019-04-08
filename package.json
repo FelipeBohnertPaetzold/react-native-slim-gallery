@@ -1,7 +1,7 @@
 {
   "name": "react-native-slim-gallery",
   "main": "./App.js",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "author": "Felipe Bohnert Paetzold",
   "repository": {
     "url": "https://github.com/FelipeBohnertPaetzold/react-native-slim-gallery",
