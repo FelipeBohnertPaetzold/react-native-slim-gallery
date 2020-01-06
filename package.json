@@ -9,6 +9,7 @@
     "type": "git"
   },
   "dependencies": {
+    "@react-native-community/viewpager": "^3.3.0",
     "react-native-zoom-view": "^1.0.2"
   },
   "peerDependencies": {

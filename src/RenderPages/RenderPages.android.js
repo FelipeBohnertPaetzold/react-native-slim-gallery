@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { ViewPagerAndroid, View, Dimensions } from 'react-native'
+import { View, Dimensions } from 'react-native'
 import PropTypes from 'prop-types'
+import ViewPagerAndroid from '@react-native-community/viewpager'
 
 export default class RenderPages extends Component {
   static get propTypes() {
