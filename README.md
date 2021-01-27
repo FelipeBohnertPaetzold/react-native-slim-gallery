@@ -1,3 +1,5 @@
+# DEPRECATED
+
 # react-native-slim-gallery
 
 A pure js **gallery** component for React Native.
